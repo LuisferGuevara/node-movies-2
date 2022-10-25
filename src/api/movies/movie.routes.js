@@ -42,4 +42,14 @@ router.get('/genre/:genre', async(req, res) => {
     }
 })
 
+router.get('/year/:year', async(req, res) => {
+    try {
+        const year = req.params.year;
+        const movieToFind = await Movie.find({year: {$gte: year}});
+        return res.status(200).json(movieToFind);
+    } catch (error) {
+        return res.status(500).json(error);
+    }
+})
+
 module.exports = router
