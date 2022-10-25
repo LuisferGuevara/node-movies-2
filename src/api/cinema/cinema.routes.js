@@ -1,7 +1,5 @@
 const express = require('express');
 
-const Movie = require('../movies/movies.models');
-
 const Cinema = require('./cinema.models');
 
 const router = express.Router();
@@ -30,7 +28,7 @@ router.post('/create', async (req, res) => {
     }
 });
 
-router.put('/add-movie', async (req, res, ) => {
+router.put('/add-movie', async (req, res) => {
     try {
         const { cinemaId } = req.body;
         const { movieId } = req.body;
@@ -44,4 +42,23 @@ router.put('/add-movie', async (req, res, ) => {
         return res.status(500).json(error)
     }
 });
+router.delete('/delete-movie', async (req,res) =>{
+    try {
+        const { cinemaId } = req.body;
+        const { movieId } = req.body;
+        const cinema = await Cinema.findById(cinemaId)
+        const movieToDelete = cinema.movies.indexOf(movieId)
+        const deletedMovie = cinema.movies.splice(movieToDelete, 1)
+        const cinemaToUpdated = await Cinema.findByIdAndUpdate(cinemaId, cinema);
+
+        console.log(cinema);
+
+        return res.status(201).json('Película eliminada correctamente')
+        
+    } catch (error) {
+        return res.status(500).json(error)
+        
+    }
+})
+
 module.exports = router
