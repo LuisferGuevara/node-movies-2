@@ -9,7 +9,7 @@ const movieSchema = new Schema(
         year: {type: Number},
         genre: {
             type: String,
-            enum: ["Comedia", "Ciencia ficcion", "Animacion", "Accion"]
+            enum: ["Comedia romántica", "Ciencia ficción", "Animación", "Acción"]
         }    
     },  
     {
