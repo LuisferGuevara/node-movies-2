@@ -16,7 +16,7 @@ router.get('/', async(req, res)=>{
     }
 })
 
-router.get('/:id', async(req, res)=>{
+router.get('/id/:id', async(req, res)=>{
     try {
         const id = req.params.id;
         const allMovies = await Movie.findById(id);
@@ -95,6 +95,7 @@ router.delete('/delete/:id', async(req,res)=>{
         
     }
 });
+
 
 
 module.exports = router;

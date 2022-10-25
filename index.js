@@ -2,6 +2,7 @@ const express = require('express');
 require('dotenv').config();
 
 const moviesRouter = require('./src/api/movies/movies.routes')
+const cinemaRouter = require('./src/api/cinema/cinema.routes')
 
 const connectDb = require('./src/utils/db/db')
 
@@ -14,6 +15,7 @@ const server = express();
 const router = express.Router();
 
 server.use(express.json());
+server.use('/cinema', cinemaRouter)
 server.use('/', moviesRouter)
 server.listen(PORT, () => {
     console.log(`Server running in ${PORT}`);
