@@ -22,4 +22,14 @@ router.get('/:id', async(req, res) => {
     }
 })
 
+router.get('/title/:title', async(req, res) => {
+    try {
+        const title = req.params.title;
+        const movieToFind = await Movie.find({title: title});
+        return res.status(200).json(movieToFind);
+    } catch (error) {
+        return res.status(500).json(error);
+    }
+})
+
 module.exports = router
