@@ -64,4 +64,19 @@ router.post('/create', async (req, res) => {
     }
 })
 
+router.put('/edit/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        const movie = req.body;
+        const movieToEdit = new Movie(movie);
+        movieToEdit._id = id;
+        const edited = await Movie.findByIdAndUpdate(id, movieToEdit)
+        return res.status(200).json(`Pelicula modificada satisfactoriamente`);
+    }
+    catch (error) {
+        return res.status(500).json('Error')
+    }
+})
+
+
 module.exports = router
