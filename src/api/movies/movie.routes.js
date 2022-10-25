@@ -82,7 +82,7 @@ router.put('/edit/:id', async (req, res) => {
 router.delete('/delete/:id', async (req, res) => {
     try {
         const id = req.params.id;
-        const deleted = await Movie.findByIdAndUpdate(id)
+        const deleted = await Movie.findByIdAndDelete(id)
         return res.status(200).json(`Pelicula eliminada satisfactoriamente`);
     }
     catch (error) {
