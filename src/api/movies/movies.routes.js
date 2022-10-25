@@ -57,4 +57,17 @@ router.get('/year/:year', async(req, res)=>{
     }
 })
 
+router.post('/create', async(req,res)=>{
+    try {
+        const movie = req.body;
+        const newMovie = new Movie(movie);
+        const created = await newMovie.save();
+        return res.status(201).json('Película creada')
+        
+    } catch (error) {
+        return res.status(500).json(error)
+        
+    }
+})
+
 module.exports = router;
