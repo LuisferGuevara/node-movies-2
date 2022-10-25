@@ -32,4 +32,14 @@ router.get('/title/:title', async(req, res) => {
     }
 })
 
+router.get('/genre/:genre', async(req, res) => {
+    try {
+        const genre = req.params.genre;
+        const movieToFind = await Movie.find({genre: genre});
+        return res.status(200).json(movieToFind);
+    } catch (error) {
+        return res.status(500).json(error);
+    }
+})
+
 module.exports = router

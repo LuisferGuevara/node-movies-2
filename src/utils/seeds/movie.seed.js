@@ -8,37 +8,37 @@ const movies = [
     title: "The Matrix",
     director: "Hermanas Wachowski",
     year: 1999,
-    genre: "Acción",
+    genre: "Accion",
   },
   {
     title: "The Matrix Reloaded",
     director: "Hermanas Wachowski",
     year: 2003,
-    genre: "Acción",
+    genre: "Accion",
   },
   {
     title: "Buscando a Nemo",
     director: "Andrew Stanton",
     year: 2003,
-    genre: "Animación",
+    genre: "Animacion",
   },
   {
     title: "Buscando a Dory",
     director: "Andrew Stanton",
     year: 2016,
-    genre: "Animación",
+    genre: "Animacion",
   },
   {
     title: "Interestelar",
     director: "Christopher Nolan",
     year: 2014,
-    genre: "Ciencia ficción",
+    genre: "Ciencia ficcion",
   },
   {
     title: "50 primeras citas",
     director: "Peter Segal",
     year: 2004,
-    genre: "Comedia romántica",
+    genre: "Comedia romantica",
   },
 ];
 
