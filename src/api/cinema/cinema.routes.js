@@ -4,17 +4,17 @@ const Cinema = require('./cinema.models');
 
 const router = express.Router();
 
-router.get('/', async(req, res)=>{
+router.get('/', async(req, res, next)=>{
     try {
         const allCinemas = await Cinema.find().populate('movies');
         console.log(allCinemas);
         return res.status(200).json(allCinemas);
     } catch (error) {
-        return res.status(500).json(error)
+        return next(error);
         
     }
 })
-router.post('/create', async (req, res) => {
+router.post('/create', async (req, res, next) => {
     try {
         const newCinema = new Cinema({
             name: req.body.name,
@@ -24,11 +24,11 @@ router.post('/create', async (req, res) => {
         const createdCinema = await newCinema.save();
         return res.status(201).json(createdCinema);
     } catch (error) {
-        return res.status(500).json(error)
+        return next(error);
     }
 });
 
-router.put('/add-movie', async (req, res) => {
+router.put('/add-movie', async (req, res, next) => {
     try {
         const { cinemaId } = req.body;
         const { movieId } = req.body;
@@ -39,10 +39,11 @@ router.put('/add-movie', async (req, res) => {
         );
         return res.status(200).json(updatedCinema);
     } catch (error) {
-        return res.status(500).json(error)
+        return next(error);
     }
 });
-router.delete('/delete-movie', async (req,res) =>{
+
+router.delete('/delete-movie', async (req,res, next) =>{
     try {
         const { cinemaId } = req.body;
         const { movieId } = req.body;
@@ -56,9 +57,9 @@ router.delete('/delete-movie', async (req,res) =>{
         return res.status(201).json('Película eliminada correctamente')
         
     } catch (error) {
-        return res.status(500).json(error)
+        return next(error);
         
     }
 })
 
-module.exports = router
+module.exports = router;

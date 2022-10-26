@@ -7,6 +7,7 @@ const cinemaSchema = new Schema(
         name: { type: String, required: true },
         location: { type: String, required: true },
         movies: [{type: mongoose.Types.ObjectId, ref:Movie}]
+        // movies: [{type: mongoose.Types.ObjectId, ref:"movies"}] opcion Correcta
     },
     {
       timestamps: true,

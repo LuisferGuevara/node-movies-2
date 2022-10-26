@@ -15,8 +15,12 @@ const server = express();
 const router = express.Router();
 
 server.use(express.json());
-server.use('/cinema', cinemaRouter)
-server.use('/', moviesRouter)
+server.use('/cinema', cinemaRouter);
+server.use('/', moviesRouter);
+server.use((error, req, res, next) =>{
+    return res.statu(error.status || 500).json(error.message ||"Unexpected error")
+});
+
 server.listen(PORT, () => {
     console.log(`Server running in ${PORT}`);
-})
+});
